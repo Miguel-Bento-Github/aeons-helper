@@ -2,8 +2,8 @@
 import { reactive } from "@vue/reactivity";
 import { useRoute, useRouter } from "vue-router";
 import { fields, defaultFields } from "@/players/players";
-import { computed, onMounted } from "@vue/runtime-core";
-import { getPlayer, updatePlayer } from "@/firebase";
+import { computed, onMounted, watch } from "@vue/runtime-core";
+import { getPlayer, updatePlayer } from "@/api/player";
 import { resetObjectValues } from "@/utils/resetObjectValues";
 
 export default {
@@ -20,6 +20,13 @@ export default {
         form[field] = player[field];
       }
     });
+
+    watch(
+      () => form,
+      (a) => {
+        console.log(a);
+      }
+    );
 
     const update = async () => {
       await updatePlayer(id.value, { ...form });

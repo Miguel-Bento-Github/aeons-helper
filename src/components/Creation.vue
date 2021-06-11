@@ -1,6 +1,6 @@
 <script>
 import { reactive } from "@vue/reactivity";
-import { createPlayer } from "@/firebase";
+import { createPlayer } from "@/api/player";
 import { fields, defaultFields } from "@/players/players";
 import { resetObjectValues } from "@/utils/resetObjectValues";
 

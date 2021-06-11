@@ -1,5 +1,6 @@
 <script>
-import { deletePlayer, useLoadPlayers } from "@/firebase";
+import { deletePlayer, useLoadPlayers } from "@/api/player";
+
 export default {
   setup() {
     const players = useLoadPlayers();
@@ -15,7 +16,11 @@ export default {
       <div>
         Name: {{ name }}
         <router-link
-          :to="{ name: 'Edit', path: `/edit/${name}`, params: { id, name } }"
+          :to="{
+            name: 'Edit',
+            params: { name: name },
+            path: `/edit/${name}`,
+          }"
           >Edit</router-link
         >
         <button type="button" @click="deletePlayer(id)">Delete</button>

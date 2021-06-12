@@ -1,19 +1,18 @@
 <script>
-import Creation from "@/components/Creation.vue";
-import Players from "@/components/Players.vue";
-
 export default {
   name: "Home",
-  components: {
-    Creation,
-    Players,
-  },
 };
 </script>
 
+<style lang="scss" scoped>
+.start {
+  color: #f3f3f3;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+</style>
+
 <template>
-  <div class="home">
-    <Creation />
-    <Players />
-  </div>
+  <h1 class="home">Welcome to Aeon's End helper</h1>
+  <router-link class="start" to="setup"> Setup </router-link>
 </template>

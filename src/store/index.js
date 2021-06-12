@@ -1,8 +1,7 @@
 import { createStore } from "vuex";
-
 export default createStore({
-  state: {
-    players: [],
+  state() {
+    return { players: [] };
   },
   mutations: {
     setPlayers(state, payload) {

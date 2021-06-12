@@ -5,31 +5,46 @@ import { fields, defaultFields } from "@/players/players";
 import { computed, onMounted, watch } from "@vue/runtime-core";
 import { getPlayer, updatePlayer } from "@/api/player";
 import { resetObjectValues } from "@/utils/resetObjectValues";
+import store from "@/store";
 
 export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const id = computed(() => route.params.id);
+    const players = computed(() => store.getters.players);
+    const name = computed(() => route.params.name);
+    const getCurrentPlayer = () =>
+      players.value.find((player) => player.name === name.value);
+    let currentPlayer = getCurrentPlayer();
 
     const form = reactive(defaultFields);
-    onMounted(async () => {
-      const player = await getPlayer(id.value);
+
+    const updateCurrentPlayer = async () => {
+      const player = await getPlayer(currentPlayer.id);
 
       for (const field in player) {
         form[field] = player[field];
       }
+    };
+
+    onMounted(() => {
+      if (currentPlayer) updateCurrentPlayer();
     });
 
     watch(
-      () => form,
-      (a) => {
-        console.log(a);
-      }
+      players,
+      (newContent) => {
+        if (newContent) {
+          currentPlayer = getCurrentPlayer();
+          updateCurrentPlayer();
+        }
+      },
+      { deep: true }
     );
 
     const update = async () => {
-      await updatePlayer(id.value, { ...form });
+      const currentPlayer = getCurrentPlayer();
+      await updatePlayer(currentPlayer.id, { ...form });
       router.push("/");
       resetObjectValues(form);
     };

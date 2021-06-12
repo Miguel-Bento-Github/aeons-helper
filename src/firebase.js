@@ -1,4 +1,7 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/analytics";
+import "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyCRXr0nkWZ3ZVYN2L0tY6xq3dYiYV0v_ag",
@@ -13,3 +16,5 @@ const config = {
 export const firebaseApp = firebase.initializeApp(config);
 export const db = firebaseApp.firestore();
 export const playerCollection = db.collection("players");
+export const nemesisCollection = db.collection("nemesis");
+export const charactersCollection = db.collection("characters");

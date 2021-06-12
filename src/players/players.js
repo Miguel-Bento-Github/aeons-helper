@@ -1,3 +1,3 @@
 export const fields = ["name", "life"];
 
-export const defaultFields = { name: "", life: 10 };
+export const defaultFields = { name: "", life: null };

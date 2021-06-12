@@ -6,7 +6,7 @@ import { resetObjectValues } from "@/utils/resetObjectValues";
 
 export default {
   setup() {
-    const form = reactive(defaultFields);
+    const form = reactive({ ...defaultFields });
 
     const onSubmit = async () => {
       try {

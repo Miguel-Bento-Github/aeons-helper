@@ -30,6 +30,9 @@ export const deletePlayer = (id) => playerCollection.doc(id).delete();
  */
 export const updatePlayer = (id, user) => playerCollection.doc(id).update(user);
 
+/**
+ * Gets a list of all players.
+ */
 export const getPlayers = async () => {
   const snapshot = await playerCollection.get();
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));

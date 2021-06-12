@@ -18,7 +18,7 @@ export default {
         <router-link
           :to="{
             name: 'Edit',
-            params: { name: name },
+            params: { name: name, id: id },
             path: `/edit/${name}`,
           }"
           >Edit</router-link

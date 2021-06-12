@@ -2,34 +2,33 @@
 import { reactive } from "@vue/reactivity";
 import { useRoute, useRouter } from "vue-router";
 import { fields, defaultFields } from "@/players/players";
-import { computed, onMounted, watch } from "@vue/runtime-core";
+import { onMounted, watch } from "@vue/runtime-core";
 import { getPlayer, updatePlayer } from "@/api/player";
-import { resetObjectValues } from "@/utils/resetObjectValues";
 import store from "@/store";
 
 export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const players = computed(() => store.getters.players);
-    const name = computed(() => route.params.name);
-    const getCurrentPlayer = () =>
-      players.value.find((player) => player.name === name.value);
-    let currentPlayer = getCurrentPlayer();
+    const players = store.state.players;
+    const id = currentPlayer ? currentPlayer.id : route.params.id;
 
-    const form = reactive(defaultFields);
+    const getCurrentPlayer = () =>
+      players.find((player) => player.name === route.params.name);
+
+    let currentPlayer = null;
+
+    const form = reactive({ ...defaultFields });
 
     const updateCurrentPlayer = async () => {
-      const player = await getPlayer(currentPlayer.id);
+      const player = await getPlayer(id);
 
       for (const field in player) {
         form[field] = player[field];
       }
     };
 
-    onMounted(() => {
-      if (currentPlayer) updateCurrentPlayer();
-    });
+    onMounted(() => updateCurrentPlayer());
 
     watch(
       players,
@@ -43,10 +42,8 @@ export default {
     );
 
     const update = async () => {
-      const currentPlayer = getCurrentPlayer();
-      await updatePlayer(currentPlayer.id, { ...form });
-      router.push("/");
-      resetObjectValues(form);
+      await updatePlayer(id, { ...form });
+      router.push("/setup");
     };
 
     return { form, update, fields };
@@ -57,11 +54,11 @@ export default {
 <template>
   <form @submit.prevent="update">
     <div v-for="field in fields" :key="field">
-      <label for="name">
+      <label :for="field">
         {{ field }}
       </label>
-      <input id="name" v-model="form[field]" required />
+      <input :id="field" v-model="form[field]" required />
     </div>
-    <button type="submit">Edit Player</button>
+    <button type="submit">Done</button>
   </form>
 </template>

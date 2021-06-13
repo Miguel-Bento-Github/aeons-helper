@@ -8,6 +8,23 @@ export default {
 .start {
   text-decoration: none;
   text-transform: capitalize;
+  width: max-content;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.25rem 0.5rem;
+  background-color: #2c3e50;
+  cursor: pointer;
+  color: #fff;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0 4px #fff;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    box-shadow: 0 0 2px #fff;
+  }
 }
 
 .home {
@@ -16,25 +33,18 @@ export default {
   color: #ec7e16;
 }
 
-.home-button {
-  width: 5rem;
-  height: 2rem;
-  background-color: #2c3e50;
-  cursor: pointer;
-  color: #fff;
-}
-
 .home-img {
   display: block;
-  width: 90%;
-  margin: 1.5rem auto 1.5rem auto;
+  width: 60%;
+  margin: 1.5rem auto;
 }
 </style>
 
 <template>
   <h1 class="home">Welcome to Aeon's End helper</h1>
   <router-link class="start" to="setup">
-    <button class="home-button" type="button">Setup</button>
+    <span> Setup </span>
+    <span class="material-icons"> play_arrow </span>
   </router-link>
   <img
     class="home-img"

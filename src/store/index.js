@@ -1,9 +1,16 @@
 import { createStore } from "vuex";
 export default createStore({
   state() {
-    return { players: [], difficulty: "easy" };
+    return {
+      nemesis: { name: "", health: null },
+      players: [],
+      difficulty: "easy",
+    };
   },
   mutations: {
+    setNemesis(state, payload) {
+      state.nemesis = payload;
+    },
     setPlayers(state, payload) {
       state.players.push(payload);
     },

@@ -2,14 +2,15 @@
 import { useLoadNemesis } from "@/api/nemesis";
 import { ref } from "@vue/reactivity";
 import { computed, onMounted } from "@vue/runtime-core";
-import store from "@/store";
+import { useStore } from "vuex";
 
 export default {
   setup() {
     const data = ref(null);
-    let activeNemesis = ref({});
+    const store = useStore();
+    const activeNemesis = computed(() => store.state.nemesis);
     const activeNemesisName = "";
-    const difficulty = computed(() => store.state.difficulty);
+    // const difficulty = computed(() => store.state.difficulty);
 
     onMounted(async () => {
       const { nemesis } = await useLoadNemesis();
@@ -18,13 +19,6 @@ export default {
 
     const updateNemesis = (nemesis) => {
       activeNemesis.value = { ...nemesis };
-
-      if (difficulty.value === "easy") {
-        activeNemesis.value.health = nemesis.health - 10;
-      }
-      if (difficulty.value === "expert") {
-        activeNemesis.value.health = nemesis.health + 10;
-      }
     };
 
     return { data, activeNemesis, activeNemesisName, updateNemesis };
@@ -45,7 +39,7 @@ export default {
       </option>
     </select>
 
-    <div v-if="activeNemesis" class="container">
+    <div class="container">
       <h1>
         {{ activeNemesis.name }}
       </h1>

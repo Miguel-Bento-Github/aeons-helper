@@ -17,6 +17,8 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 * {
   box-sizing: border-box;
   margin: 0;

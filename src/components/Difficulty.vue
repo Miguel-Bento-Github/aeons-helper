@@ -9,18 +9,16 @@
 </template>
 
 <script>
-import store from "@/store";
+import { useStore } from "vuex";
 
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+    const difficulties = ["easy", "normal", "expert"];
     return {
-      difficulties: ["easy", "normal", "expert"],
+      difficulties,
+      updateDifficulty: (level) => store.commit("setDifficulty", level),
     };
-  },
-  methods: {
-    updateDifficulty(level) {
-      store.commit("setDifficulty", level);
-    },
   },
 };
 </script>

@@ -24,12 +24,22 @@ export default {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div v-for="field in fields" :key="field">
+    <div class="form-wrapper" v-for="field in fields" :key="field">
       <label for="name">
         {{ field }}
       </label>
-      <input id="name" v-model="form[field]" required />
+      <input
+        autocomplete="off"
+        class="input"
+        id="name"
+        v-model="form[field]"
+        required
+      />
     </div>
-    <button type="submit">Create player</button>
+    <button class="submit-button" type="submit">Create player</button>
   </form>
 </template>
+
+<style lang="scss" scoped>
+@import "../styles/form";
+</style>

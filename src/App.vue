@@ -15,6 +15,20 @@ export default {
 };
 </script>
 
+<template>
+  <div class="banner"></div>
+  <div id="nav">
+    <router-link to="/">Home</router-link>
+    <a
+      target="_blank"
+      rel="noopener"
+      href="https://boardgamegeek.com/boardgame/191189/aeons-end"
+      >About</a
+    >
+  </div>
+  <router-view />
+</template>
+
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -59,15 +73,10 @@ body {
 }
 </style>
 
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
-    <a
-      target="_blank"
-      rel="noopener"
-      href="https://boardgamegeek.com/boardgame/191189/aeons-end"
-      >About</a
-    >
-  </div>
-  <router-view />
-</template>
+<style scoped>
+.banner {
+  padding: 30px;
+  background-image: url("https://despelvogel.com/wp-content/uploads/2019/06/Aeons-end-BANNER.png");
+  background-size: contain;
+}
+</style>

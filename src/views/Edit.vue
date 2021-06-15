@@ -52,13 +52,22 @@ export default {
 </script>
 
 <template>
-  <form @submit.prevent="update">
-    <div v-for="field in fields" :key="field">
+  <form class="form" @submit.prevent="update">
+    <div class="form-wrapper" v-for="field in fields" :key="field">
       <label :for="field">
         {{ field }}
       </label>
-      <input :id="field" v-model="form[field]" required />
+      <input class="input" :id="field" v-model="form[field]" required />
     </div>
-    <button type="submit">Done</button>
+    <button class="submit-button" type="submit">Done</button>
   </form>
 </template>
+
+<style lang="scss" scoped>
+@import "@/styles/form";
+
+.form {
+  width: 25vw;
+  margin: 0 auto;
+}
+</style>

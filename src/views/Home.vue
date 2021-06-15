@@ -31,12 +31,7 @@ export default {
   font-family: "Mate SC", serif;
   margin-bottom: 1rem;
   color: #ec7e16;
-}
-
-.home-img {
-  display: block;
-  width: 60%;
-  margin: 1.5rem auto;
+  font-size: 4rem;
 }
 </style>
 
@@ -46,8 +41,4 @@ export default {
     <span> Setup </span>
     <span class="material-icons"> play_arrow </span>
   </router-link>
-  <img
-    class="home-img"
-    src="https://despelvogel.com/wp-content/uploads/2019/06/Aeons-end-BANNER.png"
-  />
 </template>

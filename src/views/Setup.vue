@@ -19,24 +19,28 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
+
+.section-headers {
+  font-family: "Mate SC", serif;
+}
 </style>
 
 <template>
   <div class="wrapper">
     <div>
-      <h1>Creation</h1>
+      <h1 class="section-headers">Creation</h1>
       <creation />
     </div>
     <div>
-      <h1>Players</h1>
+      <h1 class="section-headers">Players</h1>
       <players />
     </div>
     <div>
-      <h1>Nemesis</h1>
+      <h1 class="section-headers">Nemesis</h1>
       <nemesis />
     </div>
     <div>
-      <h1>Difficulty</h1>
+      <h1 class="section-headers">Difficulty</h1>
       <difficulty />
     </div>
   </div>

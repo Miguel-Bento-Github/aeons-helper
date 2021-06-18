@@ -1,21 +1,22 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { createPlayer } from "@/api/player";
-import { requiredFields, defaultFields } from "@/players/players";
+import { requiredFields, defaultFields, playersHealth } from "@/global/players";
 import { resetObjectValues } from "@/utils/resetObjectValues";
+import { useStore } from "vuex";
+import { getPlayer } from "@/api/player";
 
 export default {
   setup() {
     const form = reactive({ ...defaultFields });
+    const store = useStore();
 
     const onSubmit = async () => {
-      try {
-        await createPlayer({ ...form });
-
-        resetObjectValues(form);
-      } catch ({ message }) {
-        console.error(message);
-      }
+      form.health = playersHealth[store.state.difficulty];
+      const id = await createPlayer({ ...form });
+      const player = await getPlayer(id);
+      store.commit("setPlayer", { ...player, id });
+      resetObjectValues(form);
     };
 
     return { form, onSubmit, requiredFields };

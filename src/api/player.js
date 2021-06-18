@@ -15,7 +15,10 @@ export const getPlayer = async (id) => {
  * Creates a new player.
  * @param {string} player
  */
-export const createPlayer = (player) => playerCollection.add(player);
+export const createPlayer = async (player) => {
+  const { id } = await playerCollection.add(player);
+  return id;
+};
 
 /**
  * Deletes a player
@@ -28,7 +31,9 @@ export const deletePlayer = (id) => playerCollection.doc(id).delete();
  * @param {string} id
  * @param {{ name: string, health: number }} user
  */
-export const updatePlayer = (id, user) => playerCollection.doc(id).update(user);
+export const updatePlayer = async (id, user) => {
+  return await playerCollection.doc(id).update(user);
+};
 
 /**
  * Gets a list of all players.

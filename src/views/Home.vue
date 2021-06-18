@@ -14,7 +14,5 @@ export default {
 
 <template>
   <h1 class="home">Welcome to Aeon's End helper</h1>
-  <router-link class="start" to="setup">
-    <button type="button">Setup</button>
-  </router-link>
+  <router-link class="start" to="setup"> Setup </router-link>
 </template>

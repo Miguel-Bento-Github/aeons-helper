@@ -1,23 +1,39 @@
 <script>
-import { onBeforeMount } from "@vue/runtime-core";
+import { onBeforeMount, onMounted } from "@vue/runtime-core";
 import { getPlayers } from "./api/player";
 import { useLoadNemesis } from "./api/nemesis";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { getGravehold } from "./api/gravehold";
 
 export default {
   setup() {
     const store = useStore();
+    const router = useRouter();
 
-    onBeforeMount(async () => {
+    const setupGameData = async () => {
+      const { gravehold } = await getGravehold();
+      store.commit("setGravehold", gravehold);
+
       const players = await getPlayers();
-
       players.forEach((player) => {
-        store.commit("setPlayers", player);
+        store.commit("setPlayer", player);
       });
 
-      const { nemesis } = await useLoadNemesis();
-      store.commit("setNemesis", nemesis.rageborne);
-    });
+      const data = await useLoadNemesis();
+      store.commit("setNemesis", data.active || data.nemesis.rageborne);
+    };
+
+    const returnToPreviousPoint = () => {
+      if (localStorage.activeRoute) router.push(localStorage.activeRoute);
+    };
+
+    /**
+     * Fetches and updates all game data
+     */
+    onBeforeMount(setupGameData);
+
+    onMounted(returnToPreviousPoint);
   },
 };
 </script>

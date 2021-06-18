@@ -1,6 +1,6 @@
+import "firebase/analytics";
 import firebase from "firebase/app";
 import "firebase/auth";
-import "firebase/analytics";
 import "firebase/firestore";
 
 const config = {
@@ -15,6 +15,9 @@ const config = {
 
 export const firebaseApp = firebase.initializeApp(config);
 export const db = firebaseApp.firestore();
+export const FieldValue = firebase.firestore.FieldValue;
+
 export const playerCollection = db.collection("players");
 export const nemesisCollection = db.collection("nemesis");
 export const charactersCollection = db.collection("characters");
+export const graveholdCollection = db.collection("gravehold");

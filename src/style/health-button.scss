@@ -1,0 +1,24 @@
+.health-button {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  border: 0;
+  font-size: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease-out;
+
+  &--increase:hover {
+    background: #91bd91;
+  }
+
+  &--decrease:hover {
+    background: #f17979;
+  }
+
+  + .health-button {
+    margin-left: 8px;
+  }
+}

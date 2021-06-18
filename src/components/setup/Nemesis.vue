@@ -30,7 +30,7 @@ export default {
       <option
         @click="updateNemesis(nemesis)"
         v-for="nemesis in data"
-        :key="nemesis"
+        :key="nemesis.name"
         :value="nemesis.name"
       >
         {{ nemesis.name }}

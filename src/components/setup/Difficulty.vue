@@ -1,13 +1,3 @@
-<template>
-  <button
-    @click="updateDifficulty(level)"
-    v-for="level in difficulties"
-    :key="level"
-  >
-    {{ level }}
-  </button>
-</template>
-
 <script>
 import store from "@/store";
 
@@ -24,3 +14,13 @@ export default {
   },
 };
 </script>
+
+<template>
+  <button
+    @click="updateDifficulty(level)"
+    v-for="level in difficulties"
+    :key="level"
+  >
+    {{ level }}
+  </button>
+</template>

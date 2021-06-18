@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/views/Home.vue";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
@@ -18,11 +18,20 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "setup" */ "@/views/Setup.vue"),
   },
+  {
+    path: "/game",
+    name: "Game",
+    component: () => import(/* webpackChunkName: "game" */ "@/views/Game.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+});
+
+router.beforeEach((to) => {
+  localStorage.activeRoute = to.path;
 });
 
 export default router;

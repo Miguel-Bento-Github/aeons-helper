@@ -1,3 +1,9 @@
-export const fields = ["name", "life"];
+/**
+ * Required fields
+ */
+export const requiredFields = ["name"];
 
-export const defaultFields = { name: "", life: null };
+/**
+ * Required default field values.
+ */
+export const defaultFields = { name: "", type: "", health: "" };

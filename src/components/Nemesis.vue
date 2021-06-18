@@ -2,39 +2,31 @@
 import { useLoadNemesis } from "@/api/nemesis";
 import { ref } from "@vue/reactivity";
 import { computed, onMounted } from "@vue/runtime-core";
-import store from "@/store";
+import { useStore } from "vuex";
 
 export default {
   setup() {
+    const store = useStore();
     const data = ref(null);
-    let activeNemesis = ref({});
-    const activeNemesisName = "";
-    const difficulty = computed(() => store.state.difficulty);
+    const activeNemesis = computed(() => store.state.nemesis);
+
+    const updateNemesis = (nemesis) => {
+      store.commit("setNemesis", nemesis);
+    };
 
     onMounted(async () => {
       const { nemesis } = await useLoadNemesis();
       data.value = nemesis;
     });
 
-    const updateNemesis = (nemesis) => {
-      activeNemesis.value = { ...nemesis };
-
-      if (difficulty.value === "easy") {
-        activeNemesis.value.health = nemesis.health - 10;
-      }
-      if (difficulty.value === "expert") {
-        activeNemesis.value.health = nemesis.health + 10;
-      }
-    };
-
-    return { data, activeNemesis, activeNemesisName, updateNemesis };
+    return { data, activeNemesis, updateNemesis };
   },
 };
 </script>
 
 <template>
   <section>
-    <select v-model="activeNemesisName">
+    <select v-model="activeNemesis.name">
       <option
         @click="updateNemesis(nemesis)"
         v-for="nemesis in data"
@@ -49,7 +41,7 @@ export default {
       <h1>
         {{ activeNemesis.name }}
       </h1>
-      <p>{{ activeNemesis.health }}</p>
+      <p>Health: {{ activeNemesis.health }}</p>
     </div>
   </section>
 </template>

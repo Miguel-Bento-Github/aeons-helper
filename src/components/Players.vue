@@ -1,18 +1,18 @@
 <script>
-import { deletePlayer, useLoadPlayers } from "@/api/player";
+import { deletePlayer } from "@/api/player";
+import { useLoadPlayers } from "@/api/player";
 
 export default {
   setup() {
     const players = useLoadPlayers();
-
-    return { players, deletePlayer };
+    return { players: players, deletePlayer };
   },
 };
 </script>
 
 <template>
-  <section>
-    <div v-for="{ name, life, id } in players" :key="name">
+  <section v-if="players.length">
+    <div v-for="{ name, health, id } in players" :key="name">
       <div>
         Name: {{ name }}
         <router-link
@@ -21,11 +21,12 @@ export default {
             params: { name: name, id: id },
             path: `/edit/${name}`,
           }"
-          >Edit</router-link
         >
+          Edit
+        </router-link>
         <button type="button" @click="deletePlayer(id)">Delete</button>
       </div>
-      <div>Life: {{ life }}</div>
+      <div>Health: {{ health }}</div>
     </div>
   </section>
 </template>

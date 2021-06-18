@@ -1,5 +1,5 @@
-import { onUnmounted, ref } from "vue";
 import { playerCollection } from "@/firebase";
+import { onUnmounted, ref } from "vue";
 
 /**
  *
@@ -26,7 +26,7 @@ export const deletePlayer = (id) => playerCollection.doc(id).delete();
 /**
  * Updates a player
  * @param {string} id
- * @param {{ name: string, life: number }} user
+ * @param {{ name: string, health: number }} user
  */
 export const updatePlayer = (id, user) => playerCollection.doc(id).update(user);
 

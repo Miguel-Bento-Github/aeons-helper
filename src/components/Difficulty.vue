@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     updateDifficulty(level) {
-      store.commit("setDifficulty", level);
+      store.dispatch("setDifficulty", level);
     },
   },
 };

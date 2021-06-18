@@ -1,19 +1,39 @@
 <script>
-import { onMounted } from "@vue/runtime-core";
+import { onBeforeMount } from "@vue/runtime-core";
 import { getPlayers } from "./api/player";
-import store from "./store";
+import { useLoadNemesis } from "./api/nemesis";
+import { useStore } from "vuex";
 
 export default {
   setup() {
-    onMounted(async () => {
+    const store = useStore();
+
+    onBeforeMount(async () => {
       const players = await getPlayers();
+
       players.forEach((player) => {
         store.commit("setPlayers", player);
       });
+
+      const { nemesis } = await useLoadNemesis();
+      store.commit("setNemesis", nemesis.rageborne);
     });
   },
 };
 </script>
+
+<template>
+  <div id="nav">
+    <router-link to="/">Home</router-link>
+    <a
+      target="_blank"
+      rel="noopener"
+      href="https://boardgamegeek.com/boardgame/191189/aeons-end"
+      >About</a
+    >
+  </div>
+  <router-view />
+</template>
 
 <style lang="scss">
 * {
@@ -55,16 +75,3 @@ body {
   }
 }
 </style>
-
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
-    <a
-      target="_blank"
-      rel="noopener"
-      href="https://boardgamegeek.com/boardgame/191189/aeons-end"
-      >About</a
-    >
-  </div>
-  <router-view />
-</template>

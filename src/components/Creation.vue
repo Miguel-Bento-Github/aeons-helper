@@ -1,7 +1,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { createPlayer } from "@/api/player";
-import { fields, defaultFields } from "@/players/players";
+import { requiredFields, defaultFields } from "@/players/players";
 import { resetObjectValues } from "@/utils/resetObjectValues";
 
 export default {
@@ -11,20 +11,21 @@ export default {
     const onSubmit = async () => {
       try {
         await createPlayer({ ...form });
+
         resetObjectValues(form);
       } catch ({ message }) {
         console.error(message);
       }
     };
 
-    return { form, onSubmit, fields };
+    return { form, onSubmit, requiredFields };
   },
 };
 </script>
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div v-for="field in fields" :key="field">
+    <div v-for="field in requiredFields" :key="field">
       <label for="name">
         {{ field }}
       </label>

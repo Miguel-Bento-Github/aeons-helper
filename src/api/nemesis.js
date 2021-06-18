@@ -10,5 +10,5 @@ import { nemesisCollection } from "@/firebase";
 export const useLoadNemesis = async () => {
   const nemesisRef = await nemesisCollection.doc("nemesis");
   const doc = await nemesisRef.get();
-  return doc.data();
+  return await doc.data();
 };

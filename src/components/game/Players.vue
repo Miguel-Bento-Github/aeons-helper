@@ -21,8 +21,12 @@ export default {
     <h2>Players</h2>
     <div class="players">
       <div class="player" v-for="{ name, health, id } in players" :key="name">
-        <div class="item">Name: {{ name }}</div>
-        <div class="item">Health: {{ health }}hp</div>
+        <div class="item">
+          <div>{{ name }}</div>
+        </div>
+        <div class="item">
+          <div>{{ health }}hp</div>
+        </div>
         <button
           @click="decreasePlayerHealth({ id: id, amount: 1 })"
           class="health-button health-button--decrease"

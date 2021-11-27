@@ -24,12 +24,16 @@ export default {
   <section class="game-section">
     <h1>Game</h1>
     <div class="content">
-      <nemesis />
-      <players />
-      <gravehold />
+      <Nemesis class="nemesis" />
+      <Players class="players" />
+      <Gravehold class="gravehold" />
     </div>
   </section>
   <button @click="gameOver()" type="button">Game over</button>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content {
+  display: grid;
+}
+</style>

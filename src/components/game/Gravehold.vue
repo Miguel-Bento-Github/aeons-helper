@@ -19,7 +19,9 @@ export default {
 <template>
   <article>
     <h2>Gravehold</h2>
-    <p class="item">Health:{{ gravehold }}hp</p>
+    <div class="item">
+      <div>{{ gravehold }}hp</div>
+    </div>
 
     <button
       @click="decreaseGraveholdHealth(1)"

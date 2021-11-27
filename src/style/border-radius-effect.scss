@@ -1,0 +1,9 @@
+@keyframes br {
+  to {
+    border-radius: 34% 32% 18% 82% / 63% 20% 40% 12%;
+  }
+}
+
+@mixin br {
+  animation: br random(3) + s infinite ease alternate-reverse;
+}

@@ -35,3 +35,12 @@ export default {
     <button type="submit">Create player</button>
   </form>
 </template>
+
+<style lang="scss" scoped>
+input {
+  border-radius: 1rem;
+  border: 0;
+  padding: 0.25rem;
+  margin: 1rem;
+}
+</style>

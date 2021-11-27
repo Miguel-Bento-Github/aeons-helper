@@ -19,27 +19,37 @@ export default {
 <template>
   <article>
     <h2>Players</h2>
-    <div v-for="{ name, health, id } in players" :key="name">
-      <div>Name: {{ name }}</div>
-      <div>Health: {{ health }}hp</div>
-      <button
-        @click="decreasePlayerHealth({ id: id, amount: 1 })"
-        class="health-button health-button--decrease"
-        type="button"
-      >
-        -
-      </button>
-      <button
-        @click="increasePlayerHealth({ id: id, amount: 1 })"
-        class="health-button health-button--increase"
-        type="button"
-      >
-        +
-      </button>
+    <div class="players">
+      <div class="player" v-for="{ name, health, id } in players" :key="name">
+        <div class="item">Name: {{ name }}</div>
+        <div class="item">Health: {{ health }}hp</div>
+        <button
+          @click="decreasePlayerHealth({ id: id, amount: 1 })"
+          class="health-button health-button--decrease"
+          type="button"
+        >
+          -
+        </button>
+        <button
+          @click="increasePlayerHealth({ id: id, amount: 1 })"
+          class="health-button health-button--increase"
+          type="button"
+        >
+          +
+        </button>
+      </div>
     </div>
   </article>
 </template>
 
 <style lang="scss" scoped>
 @import "@/style/health-button.scss";
+.players {
+  display: flex;
+  justify-content: center;
+}
+
+.player {
+  margin: 2vw;
+}
 </style>

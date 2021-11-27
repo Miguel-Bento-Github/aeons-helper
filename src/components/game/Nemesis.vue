@@ -18,8 +18,8 @@ export default {
 <template>
   <article>
     <h2>Nemesis</h2>
-    <div>Name: {{ nemesis.name }}</div>
-    <div>Health: {{ nemesis.health }}hp</div>
+    <div class="item">Name: {{ nemesis.name }}</div>
+    <div class="item">Health: {{ nemesis.health }}hp</div>
     <button
       @click="decreaseNemesisHealth(1)"
       class="health-button health-button--decrease"

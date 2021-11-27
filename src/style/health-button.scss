@@ -8,14 +8,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.25s ease-out;
+  background: linear-gradient(145deg, #2f4256, #283848);
+  box-shadow: 0.5rem 0.5rem 1rem #162029, -0.25rem -0.25rem 1rem #425c77;
 
   &--increase:hover {
-    background: #91bd91;
+    background: linear-gradient(145deg, #2f4256, #91bd91);
   }
 
   &--decrease:hover {
-    background: #f17979;
+    background: linear-gradient(145deg, #2f4256, #f17979);
   }
 
   + .health-button {

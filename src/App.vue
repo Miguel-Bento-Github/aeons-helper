@@ -41,6 +41,7 @@ export default {
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
+    <span class="separator"> / </span>
     <a
       target="_blank"
       rel="noopener"
@@ -62,6 +63,8 @@ html,
 body {
   height: 100%;
   color: #f3f3f3;
+  font-size: calc(12px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: 1.4;
 }
 
 #app {
@@ -70,12 +73,61 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background: #2c3e50;
-  height: 100%;
+  height: max-content;
+  min-height: 100%;
   width: 100%;
+  padding: 3rem;
+}
+
+a,
+button {
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+.button,
+button {
+  border: 0;
+  border-radius: 18% 82% 17% 83% / 77% 31% 69% 23%;
+  padding: 0.5rem;
+  margin: 1rem;
+  background: linear-gradient(145deg, #2f4256, #283848);
+  box-shadow: 0.5rem 0.5rem 1.5rem #162029, -0.5rem -0.5rem 1.5rem #425c77;
+  color: #f4f4f4;
+  transition: all 0.15s ease-in-out;
+  width: 5rem;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 52% 64% 10% 56% / 41% 35% 50% 18%;
+    filter: hue-rotate(0.15turn);
+    transition: all 0.25s ease-in-out;
+  }
+
+  &:active {
+    box-shadow: 0.5rem 0.5rem 1rem #162029, -0.5rem -0.5rem 1rem #425c77;
+    transition: all 0.15s ease-in-out;
+  }
+}
+
+article,
+.item {
+  margin: 1rem;
 }
 
 #nav {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
   padding: 30px;
+
+  .separator {
+    color: #bbd6f0;
+  }
 
   a {
     font-weight: bold;

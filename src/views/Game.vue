@@ -21,11 +21,15 @@ export default {
 </script>
 
 <template>
-  <section>
+  <section class="game-section">
     <h1>Game</h1>
-    <gravehold />
-    <players />
-    <nemesis />
+    <div class="content">
+      <nemesis />
+      <players />
+      <gravehold />
+    </div>
   </section>
   <button @click="gameOver()" type="button">Game over</button>
 </template>
+
+<style lang="scss" scoped></style>

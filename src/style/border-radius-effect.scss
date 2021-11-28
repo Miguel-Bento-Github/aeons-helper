@@ -1,9 +1,12 @@
+@use '@/style/random-border.scss' as *;
+
 @keyframes br {
   to {
-    border-radius: 34% 32% 18% 82% / 63% 20% 40% 12%;
+    @include random-br;
+    filter: hue-rotate(360deg);
   }
 }
 
 @mixin br {
-  animation: br random(3) + s infinite ease alternate-reverse;
+  animation: br random(3) * 3 + s infinite ease-out alternate-reverse;
 }

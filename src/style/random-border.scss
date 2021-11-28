@@ -1,0 +1,5 @@
+@mixin random-br {
+  border: 3px solid #162029;
+  border-radius: random(100) * 1% random(100) * 1% random(100) * 1% 30% / 30%
+    random(100) * 1% random(100) * 1% random(100) * 1%;
+}

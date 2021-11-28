@@ -47,13 +47,30 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/health-button.scss";
+@use "@/style/health-button";
+@use '@/style/border-radius-effect' as *;
+@use '@/style/random-border' as *;
+@use '@/style/elevate' as *;
+
 .players {
   display: flex;
   justify-content: center;
 }
 
 .player {
+  @include br;
+  @include random-br;
+  @include elevate;
   margin: 2vw;
+
+  &:nth-child(2n + 2) {
+    animation-duration: random(4) * 2 + s;
+    @include random-br;
+  }
+
+  &:nth-child(1n + 3) {
+    animation-duration: random(2) * 3 + s;
+    @include random-br;
+  }
 }
 </style>

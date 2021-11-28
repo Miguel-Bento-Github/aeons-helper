@@ -32,7 +32,7 @@ export default {
     </div>
     <router-link v-if="players" class="button start" to="/game">
       <span>Start</span>
-      <span>▶️</span>
+      <span>▷</span>
     </router-link>
     <div key="Creation" class="section-wrapper creation">
       <h1>Creation</h1>
@@ -46,7 +46,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '@/style/border-radius-effect.scss' as *;
+@use '@/style/border-radius-effect' as *;
+@use '@/style/random-border' as *;
 
 .wrapper {
   gap: 1rem;
@@ -64,17 +65,16 @@ export default {
 
 .section-wrapper {
   padding: 2rem;
-  border: 0.25rem solid #162029;
   background: linear-gradient(145deg, #2f4256, #283848);
   box-shadow: 0.5rem 0.5rem 1.5rem #162029, -0.5rem -0.5rem 1.5rem #425c77;
-  border-radius: 28% 82% 17% 83% / 47% 31% 69% 23%;
+  @include random-br;
   @include br;
 
   @for $i from 1 through 3 {
     &:nth-child(3n + #{$i}) {
       animation-duration: $i * 2.8 + s;
       animation-delay: $i * 0.034 + s;
-      border-radius: 58% 82% 17% 83% / 29% 31% 69% 23%;
+      @include random-br;
     }
 
     &:nth-child(#{$i}) {
@@ -108,7 +108,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 34% 8% 8% 43% / 5% 4% 88% 15%;
+  @include random-br;
 }
 
 .start {
@@ -124,6 +124,7 @@ export default {
   animation: start 6s infinite alternate-reverse;
   -webkit-font-smoothing: subpixel-antialiased;
   backface-visibility: hidden;
+  font-size: calc(16px + (36 - 16) * ((100vw - 300px) / (2160 - 300)));
 }
 
 @keyframes start {

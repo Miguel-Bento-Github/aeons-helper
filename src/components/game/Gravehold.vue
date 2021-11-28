@@ -41,5 +41,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/health-button.scss";
+@use "@/style/health-button";
+@use '@/style/elevate' as *;
+@use '@/style/random-border' as *;
+@use '@/style/border-radius-effect' as *;
+
+article {
+  @include elevate;
+  @include br;
+  @include random-br;
+}
 </style>

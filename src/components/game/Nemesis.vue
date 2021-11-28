@@ -17,9 +17,9 @@ export default {
 
 <template>
   <article>
-    <h2>Nemesis</h2>
-    <div class="item">{{ nemesis.name }}</div>
-    <div class="item">{{ nemesis.health }}hp</div>
+    <h1>Nemesis</h1>
+    <h2 class="item">{{ nemesis.name }}</h2>
+    <h3 class="item">{{ nemesis.health }}hp</h3>
     <button
       @click="decreaseNemesisHealth(1)"
       class="health-button health-button--decrease"
@@ -38,5 +38,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/health-button.scss";
+@use "@/style/health-button";
+@use '@/style/border-radius-effect' as *;
+@use '@/style/random-border' as *;
+@use '@/style/elevate' as *;
+
+article {
+  @include random-br;
+  @include br;
+  @include elevate;
+  margin: 4vw;
+}
 </style>

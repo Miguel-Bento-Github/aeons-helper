@@ -41,6 +41,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '@/style/random-border' as *;
+
 .create-player {
   padding: 0.5rem;
   display: flex;
@@ -48,7 +50,7 @@ export default {
 }
 
 .player-control {
-  border-radius: 52% 64% 10% 56% / 41% 35% 50% 18%;
+  @include random-br;
 }
 
 input {

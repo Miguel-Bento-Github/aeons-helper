@@ -24,9 +24,9 @@ export default {
   <section class="game-section">
     <h1>Game</h1>
     <div class="content">
-      <Nemesis class="nemesis" />
-      <Players class="players" />
-      <Gravehold class="gravehold" />
+      <Nemesis />
+      <Players />
+      <Gravehold />
     </div>
   </section>
   <button @click="gameOver()" type="button">Game over</button>

@@ -58,7 +58,9 @@ export default {
 </template>
 
 <style lang="scss">
-@use '@/style/border-radius-effect.scss' as *;
+@use '@/style/border-radius-effect' as *;
+@use '@/style/random-border' as *;
+@use '@/style/elevate' as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 
 * {
@@ -104,30 +106,35 @@ a {
 .button,
 button,
 fieldset {
-  border: solid #162029;
-  border-radius: 18% 82% 17% 83% / 77% 31% 69% 23%;
-  padding: 0.5rem;
+  width: 5rem;
   margin: 1rem;
-  background: linear-gradient(145deg, #2f4256, #283848);
-  box-shadow: 0.5rem 0.5rem 1.5rem #162029, -0.5rem -0.5rem 1.5rem #425c77;
+  padding: 0.5rem;
+  @include br;
+  @include random-br;
+  @include elevate;
   color: #f4f4f4;
   transition: all 0.15s ease-in-out;
-  width: 5rem;
   cursor: pointer;
-  @include br;
 
-  &:nth-child(2n + 1) {
-    animation-delay: random(4) / 10 + s;
+  &:nth-child(2n + 2) {
+    animation-duration: random(4) * 2 + s;
+    @include random-br;
   }
 
-  &:nth-child(4n + 4) {
-    animation-delay: random(2) / 10 + s;
+  &:nth-child(1n + 3) {
+    animation-duration: random(6) * 2 + s;
+    @include random-br;
+  }
+
+  &:nth-child(3n + 1) {
+    animation-duration: random(4) * 2 + s;
+    @include random-br;
   }
 
   &:hover {
-    border-radius: 52% 64% 10% 56% / 41% 35% 50% 18%;
+    @include random-br;
     filter: hue-rotate(0.15turn);
-    transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease;
   }
 
   &:active {

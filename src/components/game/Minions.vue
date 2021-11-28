@@ -39,5 +39,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/health-button.scss";
+@use "@/style/health-button";
 </style>

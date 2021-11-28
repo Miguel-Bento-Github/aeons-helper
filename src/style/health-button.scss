@@ -1,25 +1,28 @@
+@use '@/style/elevate' as *;
+
 .health-button {
-  border-radius: 50%;
+  @include elevate;
   height: 32px;
   width: 32px;
-  border: 0;
   font-size: 100%;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #162029;
   cursor: pointer;
-  background: linear-gradient(145deg, #2f4256, #283848);
-  box-shadow: 0.5rem 0.5rem 1rem #162029, -0.25rem -0.25rem 1rem #425c77;
 
   &--increase:hover {
     background: linear-gradient(145deg, #2f4256, #91bd91);
+    filter: none;
   }
 
   &--decrease:hover {
     background: linear-gradient(145deg, #2f4256, #f17979);
+    filter: none;
   }
 
-  + .health-button {
+  & + .health-button {
     margin-left: 8px;
   }
 }

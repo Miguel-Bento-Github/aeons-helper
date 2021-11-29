@@ -1,11 +1,11 @@
 <script>
-import { onBeforeMount, onMounted } from "@vue/runtime-core";
-import { getPlayers } from "./api/player";
-import { useLoadNemesis } from "./api/nemesis";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
-import { getGravehold } from "./api/gravehold";
 import { auth } from "@/api/auth";
+import { onBeforeMount, onMounted } from "@vue/runtime-core";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { getGravehold } from "./api/gravehold";
+import { useLoadNemesis } from "./api/nemesis";
+import { getPlayers } from "./api/player";
 
 export default {
   setup() {
@@ -75,28 +75,55 @@ body {
   color: #f3f3f3;
   font-size: calc(12px + (24 - 14) * ((100vw - 300px) / (2160 - 300)));
   line-height: 1.4;
-  background: #2c3e50;
-  display: grid;
-  place-content: center;
+}
+
+body {
+  background: conic-gradient(
+    from 90deg at 50% 120%,
+    #f17979,
+    #ec777e,
+    #e07189,
+    #cc6896,
+    #b55da0,
+    #94509b,
+    #65427f,
+    #403565,
+    #292b4e,
+    #1f283a,
+    #18222e,
+    #162029
+  );
+  min-height: 100%;
+  height: max-content;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  cursor: default;
+}
+
+#app,
+button,
+a,
+input {
+  color: inherit;
+  font: inherit;
+  text-shadow: 2px 2px 4px #162029;
 }
 
 #app {
   font-family: Montserrat, Avenir, Helvetica, Arial, sans-serif;
-  text-shadow: 2px 2px #162029;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  height: max-content;
   min-height: 100%;
+  height: max-content;
   width: 100%;
   max-width: 1300px;
   padding: 3rem;
-}
-
-a,
-button {
-  color: inherit;
-  font: inherit;
+  margin: auto;
 }
 
 a {
@@ -106,12 +133,12 @@ a {
 .button,
 button,
 fieldset {
+  @include br-button;
+  @include elevate;
+  @include random-br;
   width: 5rem;
   margin: 1rem;
   padding: 0.5rem;
-  @include br;
-  @include random-br;
-  @include elevate;
   color: #f4f4f4;
   transition: all 0.15s ease-in-out;
   cursor: pointer;
@@ -129,17 +156,6 @@ fieldset {
   &:nth-child(3n + 1) {
     animation-duration: random(4) * 2 + s;
     @include random-br;
-  }
-
-  &:hover {
-    @include random-br;
-    filter: hue-rotate(0.15turn);
-    transition: all 0.25s ease;
-  }
-
-  &:active {
-    box-shadow: 0.5rem 0.5rem 1rem #162029, -0.5rem -0.5rem 1rem #425c77;
-    transition: all 0.15s ease-in-out;
   }
 }
 

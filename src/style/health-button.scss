@@ -1,7 +1,6 @@
 @use '@/style/elevate' as *;
 
 .health-button {
-  @include elevate;
   height: 32px;
   width: 32px;
   font-size: 100%;
@@ -12,14 +11,12 @@
   border: 2px solid #162029;
   cursor: pointer;
 
-  &--increase:hover {
+  &--increase {
     background: linear-gradient(145deg, #2f4256, #91bd91);
-    filter: none;
   }
 
-  &--decrease:hover {
+  &--decrease {
     background: linear-gradient(145deg, #2f4256, #f17979);
-    filter: none;
   }
 
   & + .health-button {

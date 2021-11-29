@@ -1,6 +1,5 @@
 <script>
-import { deletePlayer } from "@/api/player";
-import { useLoadPlayers } from "@/api/player";
+import { deletePlayer, useLoadPlayers } from "@/api/player";
 
 export default {
   setup() {
@@ -11,16 +10,18 @@ export default {
 </script>
 
 <template>
-  <section v-if="players.length">
+  <div v-if="players.length">
     <div v-for="{ name, health, id } in players" :key="name">
       <div class="player">
-        <div class="name">Name: {{ name }}</div>
-        <div
-          title="health can only be changed with game difficulty"
-          class="health"
-        >
-          Health: {{ health }}
-        </div>
+        <header class="player-header">
+          <h4 class="name">Name: {{ name }}</h4>
+          <h4
+            title="health can only be changed with game difficulty"
+            class="health"
+          >
+            Health: {{ health }}
+          </h4>
+        </header>
         <div class="controls">
           <router-link
             class="edit button"
@@ -37,18 +38,19 @@ export default {
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.edit,
-.delete {
-  font-size: calc(12px + (18 - 14) * ((100vw - 300px) / (1600 - 300)));
-  font-weight: 600;
+.controls {
+  display: flex;
 }
 
-.edit {
-  cursor: context-menu;
+.edit,
+.delete {
+  display: inline-block;
+  font-size: calc(12px + (18 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-weight: 600;
 }
 
 .delete {

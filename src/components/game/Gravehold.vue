@@ -1,6 +1,6 @@
 <script lang="ts">
-import { mapMutations } from "vuex";
 import { useLoadGravehold } from "@/api/gravehold";
+import { mapMutations } from "vuex";
 
 export default {
   setup() {
@@ -19,9 +19,7 @@ export default {
 <template>
   <article>
     <h2>Gravehold</h2>
-    <div class="item">
-      <div>{{ gravehold }}hp</div>
-    </div>
+    <p class="item">{{ gravehold }}hp</p>
 
     <button
       @click="decreaseGraveholdHealth(1)"

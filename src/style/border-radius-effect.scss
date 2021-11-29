@@ -1,4 +1,5 @@
 @use '@/style/random-border.scss' as *;
+@use '@/style/elevate' as *;
 
 @keyframes br {
   to {
@@ -7,6 +8,54 @@
   }
 }
 
+@keyframes br-button {
+  to {
+    @include random-br;
+  }
+}
+
 @mixin br {
-  animation: br random(3) * 3 + s infinite ease-out alternate-reverse;
+  animation: br random(3) * 3 + s infinite ease alternate-reverse;
+}
+
+@mixin br-button {
+  position: relative;
+  overflow: hidden;
+  animation: br-button random(3) * 3 + s infinite ease alternate-reverse;
+
+  &::before {
+    @include elevate;
+    z-index: -1;
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    filter: invert(100%);
+    transform: scale(0);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  &:hover {
+    position: relative;
+    overflow: hidden;
+    color: #162029;
+
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:focus-within {
+    color: inherit;
+
+    &::before {
+      opacity: 1;
+      transform: translateY(150%);
+      transition: transform 0.15s ease;
+    }
+  }
 }

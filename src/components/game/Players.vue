@@ -18,15 +18,10 @@ export default {
 
 <template>
   <article>
-    <h2>Players</h2>
     <div class="players">
       <div class="player" v-for="{ name, health, id } in players" :key="name">
-        <div class="item">
-          <div>{{ name }}</div>
-        </div>
-        <div class="item">
-          <div>{{ health }}hp</div>
-        </div>
+        <h2>{{ name }}</h2>
+        <p>{{ health }}hp</p>
         <button
           @click="decreasePlayerHealth({ id: id, amount: 1 })"
           class="health-button health-button--decrease"
@@ -62,6 +57,7 @@ export default {
   @include random-br;
   @include elevate;
   margin: 2vw;
+  padding: 0.5rem 2rem;
 
   &:nth-child(2n + 2) {
     animation-duration: random(4) * 2 + s;

@@ -8,7 +8,7 @@ export default {
   <h1 class="home">Welcome to Aeon's End helper</h1>
   <router-link class="button" to="setup">
     <span>Settings</span>
-    <span>▷</span>
+    <span>▶</span>
   </router-link>
 </template>
 

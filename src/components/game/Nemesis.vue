@@ -17,9 +17,8 @@ export default {
 
 <template>
   <article>
-    <h1>Nemesis</h1>
     <h2 class="item">{{ nemesis.name }}</h2>
-    <h3 class="item">{{ nemesis.health }}hp</h3>
+    <p class="item">{{ nemesis.health }}hp</p>
     <button
       @click="decreaseNemesisHealth(1)"
       class="health-button health-button--decrease"
